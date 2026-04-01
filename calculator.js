@@ -213,3 +213,35 @@ After completing all TODOs, test your calculator:
 
 */
 
+// TODO 1: Import Required Modules
+import { add, subtract, multiply, divide } from "./utils/operations.js";
+import { parseNumbers, isValidOperation } from "./utils/parser.js";
+
+// TODO 2: Parse Command Line Arguments
+const operation = process.argv[2];
+const numbersInput = process.argv.slice(3);
+
+// TODO 3: Validate Input and Calculate
+if (!isValidOperation(operation)) {
+  console.log("Invalid operation. Use: add, subtract, multiply, or divide");
+} else {
+  const nums = parseNumbers(numbersInput);
+  let result;
+
+  switch (operation) {
+    case "add":
+      result = add(nums);
+      break;
+    case "subtract":
+      result = subtract(nums);
+      break;
+    case "multiply":
+      result = multiply(nums);
+      break;
+    case "divide":
+      result = divide(nums);
+      break;
+  }
+
+  console.log(`Result: ${result}`);
+}
